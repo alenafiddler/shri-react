@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "icons";
+    src: url("./icons.eot?5e70e083b5d0c94c1c9fd819f1eb88ce#iefix") format("embedded-opentype"),
+url("./icons.woff2?5e70e083b5d0c94c1c9fd819f1eb88ce") format("woff2"),
+url("./icons.woff?5e70e083b5d0c94c1c9fd819f1eb88ce") format("woff"),
+url("./icons.ttf?5e70e083b5d0c94c1c9fd819f1eb88ce") format("truetype"),
+url("./icons.svg?5e70e083b5d0c94c1c9fd819f1eb88ce#icons") format("svg");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-calendar:before {
+    content: "\f101";
+}
+.icon-clock:before {
+    content: "\f102";
+}
+.icon-close:before {
+    content: "\f103";
+}
+.icon-code-commit:before {
+    content: "\f104";
+}
+.icon-cog:before {
+    content: "\f105";
+}
+.icon-error:before {
+    content: "\f106";
+}
+.icon-logo:before {
+    content: "\f107";
+}
+.icon-ok:before {
+    content: "\f108";
+}
+.icon-play:before {
+    content: "\f109";
+}
+.icon-rebuild:before {
+    content: "\f10a";
+}
+.icon-user:before {
+    content: "\f10b";
+}
+.icon-wait:before {
+    content: "\f10c";
+}

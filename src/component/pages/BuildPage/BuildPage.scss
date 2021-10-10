@@ -1,0 +1,110 @@
+@import "src/scss/settingColor";
+.build-item{
+  display: flex;
+  box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 1px 1px rgba(67, 68, 69, 0.3);
+  border-radius: 6px;
+  margin: 8px 0px;
+  min-height: 68px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  & .build-status {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0 10px 0 0;
+  }
+  & .status-ok, & .status-ok i{
+    color: $green-500;
+  }
+  & .status-error, & .status-error i{
+    color: $red-500;
+  }
+  & .status-wait, & .status-wait i{
+    color: $orange-500;
+  }
+  &:hover{
+    box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 2px 8px rgba(67, 68, 69, 0.3);
+    cursor: pointer;
+  }
+}
+.build-name{
+  display: flex;
+  flex-direction: column;
+  color: $black-500;
+  & .build-name__title{
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0 0 5px 0;
+    display: flex;
+  }
+  & .build-name__git{
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    & span{
+      opacity: 0.65;
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+  & i {
+    margin: 0 5px 0 0;
+    color: $color-text-custom-2;
+    &.icon-code-commit{
+      margin-top: -2px;
+    }
+  }
+}
+.build-info{
+  display: flex;
+  & .build-icon{
+    width: 30px;
+    font-size: 21px;
+  }
+}
+.build-date{
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  & .build-date__time{
+    margin: 0 0 5px;
+  }
+  & i {
+    margin: 0 5px 0 0;
+    color: $color-text-custom;
+  }
+}
+@media (max-width: 520px) {
+  .build-item{
+    flex-direction: column;
+    padding: 12px 30px;
+  }
+  .build-date{
+    display: flex;
+    border-top: 1px solid $blue-grey-50;
+    padding: 10px 0 0;
+    margin: 15px 0 0 0;
+    & .build-date__time{
+      margin: 0 10px 0 0;
+    }
+    & i{
+      font-size: 16px;
+    }
+  }
+  .build-name__git{
+    flex-direction: column;
+    & .git-name{
+      margin: 5px 0 0 0;
+    }
+  }
+  .build-name .build-name__title{
+    flex-direction: column;
+  }
+  .build-info .build-icon{
+    width: 30px;
+    font-size: 15px;
+    position: absolute;
+    left: 20px;
+  }
+}

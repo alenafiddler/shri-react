@@ -1,0 +1,59 @@
+@import "src/scss/settingColor";
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 10px;
+  position: relative;
+  & .input-clear {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    font-size: 15px;
+    color: $color-text-second;
+    cursor: pointer;
+  }
+  & label {
+    margin: 0 0 5px;
+  }
+  &.form-row_requared label:after{
+    content: "*";
+    color: $red-500;
+    display: inline-block;
+    margin: 0 0 0 3px;
+  }
+  &.form-row_line{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    & .input-control{
+      margin: 0 10px;
+    }
+    & .btn {
+      margin: 0 10px 0 0;
+    }
+  }
+  &.error input{
+    border-color: $red-500;
+  }
+}
+.error-message{
+  position: absolute;
+  color: $red-500;
+  bottom: -13px;
+  font-size: 11px;
+}
+.input-control {
+  border: 2px solid $color-form-border;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 10px 15px;
+  &:focus {
+    border: 2px solid $color-form-border-hovered;
+  }
+  &::placeholder{
+    opacity: 0.2;
+  }
+  &.input-control_mini{
+    max-width: 52px;
+  }
+}

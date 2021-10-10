@@ -1,0 +1,38 @@
+@import "src/scss/settingColor";
+.setting-title {
+  & .title_mini{
+    font-size: 13px;
+    color: $blue-grey-500;
+    font-weight: 400;
+  }
+}
+.form-setting {
+  max-width: 474px;
+  width: 100%;
+  &.loading .form-row{
+    opacity: 0.4;
+    &:last-of-type{
+      opacity: 1;
+    }
+  }
+}
+.input-clear {
+  position: absolute;
+}
+.message-form{
+  position: absolute;
+  top: -20px;
+  color: $green-500;
+  &.error{
+    color: $red-500;
+  }
+}
+@media (max-width: 520px) {
+  .form-row.form-row_line.form-row_line_btn{
+    flex-direction: column;
+    & .btn {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+}
