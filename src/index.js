@@ -6,14 +6,20 @@ import Header from "./component/Header/Header";
 import MainLayout from "./component/MainLayout/MainLayout";
 import Footer from "./component/Footer/Footer";
 import {BrowserRouter} from "react-router-dom";
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
+const store = createStore()
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <MainLayout className="wrapper" />
-      <Footer/>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+        <MainLayout className="wrapper" />
+        <Footer/>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
