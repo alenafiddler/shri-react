@@ -1,7 +1,6 @@
 import Icon from "../Icon";
 import '../Input/Input.scss';
-function handleInputChange(event) {
-}
+
 function isInValid({valid, touched, shouldValidate}) {
   return !valid && shouldValidate && touched
 }

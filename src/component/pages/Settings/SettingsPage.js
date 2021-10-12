@@ -2,26 +2,20 @@ import './Settings.scss'
 import {useState} from "react";
 import { useHistory } from "react-router-dom";
 import Input from "../../common/Input/Input";
+import {useDispatch, useSelector} from 'react-redux'
+import { actions } from '../../../store/settingsReducer'
+import {store} from '../../../store.js'
+
 export const SettingsPage = () => {
   const history = useHistory();
-  const repositoryDefault =
-    localStorage.getItem('repository') && localStorage.getItem('repository').length > 0
-      ? localStorage.getItem('repository')
-      : null
-  const commandDefault =
-    localStorage.getItem('command') && localStorage.getItem('command').length > 0
-      ? localStorage.getItem('command')
-      : null
+  const dispatch = useDispatch();
+  const settings = useSelector(state => state.settingsReducer.settings);
+  const repositoryDefault = settings?.repository ?? null
+  const commandDefault = settings?.command ?? null
 
-  const branchDefault =
-    localStorage.getItem('branch') && localStorage.getItem('branch').length > 0
-      ? localStorage.getItem('branch')
-      : null
+  const branchDefault = settings?.branch ?? null
 
-  const minutesDefault =
-    localStorage.getItem('minutes') && localStorage.getItem('minutes').length > 0
-      ? localStorage.getItem('minutes')
-      : null
+  const minutesDefault = settings?.minutes ?? 0
 
   let stateDefault = {
     formControls: {
@@ -93,12 +87,17 @@ export const SettingsPage = () => {
     let command = controls.command
     let branch = controls.branch
     let minutes = state.minutes
+    const values = {
+      'controls': controls.value,
+      'repository': repository.value,
+      'command': command.value,
+      'branch': branch.value ,
+      'minutes': minutes.value
+    }
+
     setLoaded(true)
     setTimeout(() => {
-      localStorage.setItem('repository', repository.value);
-      localStorage.setItem('command', command.value);
-      localStorage.setItem('branch', branch.value);
-      localStorage.setItem('minutes', minutes.value);
+      dispatch(actions.saveSettings(values));
       setLoaded(false)
       const number = Math.floor(Math.random() * 10);
       if (number % 2) {
@@ -111,11 +110,6 @@ export const SettingsPage = () => {
       setMessage(true)
 
     }, 3000)
-    if (repository.length && command.length){
-
-    } else {
-
-    }
   }
   function validateControl(value, validation) {
     if (!validation) {
@@ -149,16 +143,8 @@ export const SettingsPage = () => {
     })
   }
 
-  function onClear(event,name) {
-    const formControls = {...state.formControls}
-    const control = {...formControls[name]}
-    control.value = ''
-    control.touched = true
-    control.valid = validateControl(control.value, control.validation)
-    formControls[name] = control
-    setState({
-      formControls
-    })
+  function onClear() {
+    dispatch(actions.saveSettings(null));
   }
   function renderInput(){
       return Object.keys(state.formControls).map((name, index)=>{

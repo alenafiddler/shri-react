@@ -3,9 +3,10 @@ import Icon from "../common/Icon";
 import ModalCustom from "../common/ModalCustom/ModalCustom";
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 function Header() {
-  const isSettingNo = localStorage.getItem('repository') ? false : true
+  const isSettingNo = useSelector(state => state.settingsReducer.settings)
   const [modalIsOpen, setIsOpen] = useState(false);
   const location = useLocation();
   function openModal() {
@@ -17,7 +18,7 @@ function Header() {
 
   return (
     <header className="wrapper">
-      {isSettingNo ?
+      {!isSettingNo ?
         <>
         <div className='title'>School CI server</div>
         {(location.pathname === '/')
